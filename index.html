@@ -237,36 +237,45 @@
             opacity: 0;
         }
 
-        #matrix-text {
+        .matrix-text {
             font-family: "Courier New", monospace;
             color: green;
             position: absolute;
-            bottom: 0;
             white-space: nowrap;
         }
     </style>
 </head>
 <body>
-    <div id="matrix-container">
-        <pre id="matrix-text"></pre>
-    </div>
+    <div id="matrix-container"></div>
 
     <script>
-        const matrixText = document.getElementById("matrix-text");
         const matrixContainer = document.getElementById("matrix-container");
 
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        let matrixCode = "";
+        const lines = []; // Array to hold individual lines
+
+        // Create and initialize lines
+        for (let i = 0; i < 20; i++) { // Adjust the number of lines as needed
+            const line = document.createElement("div");
+            line.classList.add("matrix-text");
+            line.style.top = `${i * 5}%`; // Adjust the spacing between lines
+            line.textContent = generateMatrixCode();
+            matrixContainer.appendChild(line);
+            lines.push(line);
+        }
 
         function generateMatrixCode() {
+            let matrixCode = "";
             for (let i = 0; i < 100; i++) {
                 matrixCode += characters.charAt(Math.floor(Math.random() * characters.length));
             }
+            return matrixCode;
         }
 
         function updateMatrix() {
-            matrixCode = matrixCode.substring(1) + characters.charAt(Math.floor(Math.random() * characters.length));
-            matrixText.textContent = matrixCode;
+            for (const line of lines) {
+                line.textContent = generateMatrixCode();
+            }
         }
 
         // Function to fade out the animation
@@ -279,7 +288,6 @@
         }
 
         // Generate and update the Matrix animation
-        generateMatrixCode();
         setInterval(updateMatrix, 100);
 
         // Show the animation initially
@@ -293,38 +301,6 @@
 </body>
 </html>
 
-    
-    <div id="matrix-container">
-        <pre id="matrix-text"></pre>
-    </div>
-
-    <script>
-        // Matrix animation code goes here
-        const matrixText = document.getElementById("matrix-text");
-        const matrixContainer = document.getElementById("matrix-container");
-
-        // Define your matrix animation logic here
-
-        // Example animation:
-        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        let matrixCode = "";
-
-        function generateMatrixCode() {
-            for (let i = 0; i < 100; i++) {
-                matrixCode += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-        }
-
-        function updateMatrix() {
-            matrixCode = matrixCode.substring(1) + characters.charAt(Math.floor(Math.random() * characters.length));
-            matrixText.textContent = matrixCode;
-        }
-
-        setInterval(updateMatrix, 100);
-
-        // Fade in the matrix container
-        matrixContainer.style.opacity = 1;
-    </script>
 </body>
 
             
