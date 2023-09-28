@@ -215,5 +215,43 @@
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
+<body>
+    <!-- Your website content goes here -->
 
+    <!-- Add the Matrix rain animation code here -->
+    
+    <div id="matrix-container">
+        <pre id="matrix-text"></pre>
+    </div>
+
+    <script>
+        // Matrix animation code goes here
+        const matrixText = document.getElementById("matrix-text");
+        const matrixContainer = document.getElementById("matrix-container");
+
+        // Define your matrix animation logic here
+
+        // Example animation:
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        let matrixCode = "";
+
+        function generateMatrixCode() {
+            for (let i = 0; i < 100; i++) {
+                matrixCode += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+        }
+
+        function updateMatrix() {
+            matrixCode = matrixCode.substring(1) + characters.charAt(Math.floor(Math.random() * characters.length));
+            matrixText.textContent = matrixCode;
+        }
+
+        setInterval(updateMatrix, 100);
+
+        // Fade in the matrix container
+        matrixContainer.style.opacity = 1;
+    </script>
+</body>
+
+            
 </html>
