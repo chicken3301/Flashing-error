@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flashing Text</title>
     <style>
         @keyframes flash {
@@ -17,10 +18,12 @@
 
         .flashing-text {
             animation: flash 1s infinite;
+            font-size: 4vw; /* Responsive font size */
+            max-width: 100%; /* Ensure text doesn't overflow */
         }
     </style>
 </head>
 <body>
-    <p class="flashing-text">cookies not found your not a member of the forum admin access only $$master admin Surendra sonawane</p>
+    <p class="flashing-text">cookies not found admin access only $master admin Surendra sonawane</p>
 </body>
 </html>
